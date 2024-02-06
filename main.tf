@@ -7,7 +7,7 @@ terraform {
       name = "terraform-cli-example"
     }
   }
-  
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -29,8 +29,8 @@ resource "docker_image" "ubuntu" {
 }
 
 resource "docker_container" "ubuntu_container" {
-  image = docker_image.ubuntu.image_id
-  name  = "ubuntu_container"
+  image             = docker_image.ubuntu.image_id
+  name              = "ubuntu_container"
   must_run          = true
   publish_all_ports = true
   command = [
@@ -42,7 +42,9 @@ resource "docker_container" "ubuntu_container" {
 
 # Start of Serverless Jenkins
 provider "aws" {
-  region = "us-west-2"
+  region                   = "us-west-2"
+  profile                  = "aws"
+  shared_credentials_files = ["/home/kwalsh/.aws/credentials"]
 }
 
 module "serverless-jenkins" {
