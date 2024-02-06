@@ -51,13 +51,13 @@ module "serverless-jenkins" {
   source  = "TheNageek/serverless-jenkins/aws"
   version = "0.2.0"
 
-  vpc_id                = "vpc-08f99007f40f672d5"
-  public_subnets        = ["subnet-0fe5db33a329d573a", "subnet-0efef07aded8f23e2"]
-  private_subnets       = ["subnet-0159622f96c25ba89", "subnet-020e05cdaea8b9e20"]
+  vpc_id                = "vpc-03a6a84c4ca2a17dd"
+  public_subnets        = ["subnet-0a68ccafccaa2c745", "subnet-06f0e1e9d32152380"]
+  private_subnets       = ["subnet-049536fff4d9d043f", "subnet-01e3d319aae921484"]
   assign_public_ip      = false
   create_private_subnet = true
   private_subnet_cidr   = "10.0.5.0/24"
-  natg_public_subnet    = "subnet-0fe5db33a329d573a"
+  natg_public_subnet    = "subnet-0a68ccafccaa2c745"
 
   alb_protocol = "HTTP"
   # alb_policy_ssl      = "ELBSecurityPolicy-FS-1-2-Res-2019-08"
