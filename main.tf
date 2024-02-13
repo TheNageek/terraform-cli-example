@@ -31,6 +31,13 @@ resource "docker_image" "ubuntu" {
 resource "docker_container" "ubuntu_container" {
   image             = docker_image.ubuntu.image_id
   name              = "ubuntu_container"
+  must_run          = true
+  publish_all_ports = true
+  command = [
+    "tail",
+    "-f",
+    "/dev/null"
+  ]
 }
 
 # Start of Serverless Jenkins
