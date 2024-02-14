@@ -13,31 +13,7 @@ terraform {
       source  = "hashicorp/aws"
       version = "~>5.0"
     }
-    docker = {
-      source  = "kreuzwerker/docker"
-      version = "3.0.2"
-    }
   }
-}
-
-provider "docker" {
-  host = "unix:///var/run/docker.sock"
-}
-
-resource "docker_image" "ubuntu" {
-  name = "ubuntu:latest"
-}
-
-resource "docker_container" "ubuntu_container" {
-  image             = docker_image.ubuntu.image_id
-  name              = "ubuntu_container"
-  must_run          = true
-  publish_all_ports = true
-  command = [
-    "tail",
-    "-f",
-    "/dev/null"
-  ]
 }
 
 # Start of Serverless Jenkins
