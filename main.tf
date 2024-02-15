@@ -30,7 +30,7 @@ module "serverless-jenkins" {
   vpc_id                = "vpc-03a6a84c4ca2a17dd"
   public_subnets        = ["subnet-0a68ccafccaa2c745", "subnet-06f0e1e9d32152380"]
   private_subnets       = ["subnet-049536fff4d9d043f", "subnet-01e3d319aae921484"]
-  assign_public_ip      = false
+  assign_public_ip      = true
   create_private_subnet = false
 
   alb_protocol = "HTTP"
