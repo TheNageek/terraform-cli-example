@@ -13,7 +13,33 @@ terraform {
       source  = "hashicorp/aws"
       version = "~>5.0"
     }
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "3.0.2"
+    }
   }
+}
+
+provider "docker" {
+  host = "unix:///var/run/docker.sock"
+}
+
+resource "docker_image" "ubuntu" {
+  name         = "ubuntu:latest"
+  force_remove = true
+}
+
+resource "docker_container" "ubuntu_container" {
+  image             = docker_image.ubuntu.image_id
+  name              = "ubuntu_container"
+  must_run          = true
+  rm                = true
+  publish_all_ports = true
+  command = [
+    "tail",
+    "-f",
+    "/dev/null"
+  ]
 }
 
 # Start of Serverless Jenkins
@@ -33,7 +59,7 @@ module "serverless-jenkins" {
   assign_public_ip      = true
   create_private_subnet = false
 
-  alb_protocol = "HTTPS"
+  alb_protocol        = "HTTPS"
   alb_policy_ssl      = "ELBSecurityPolicy-FS-1-2-Res-2019-08"
   alb_certificate_arn = var.certificate_arn
 
