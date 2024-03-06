@@ -20,6 +20,7 @@ terraform {
   }
 }
 
+# TODO(kwalsh): remove docker_image and docker_container
 provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
@@ -59,6 +60,7 @@ module "serverless-jenkins" {
   assign_public_ip      = true
   create_private_subnet = false
 
+  # TODO(kwalsh): add in HTTPS
   alb_protocol        = "HTTP"
   # alb_policy_ssl      = "ELBSecurityPolicy-FS-1-2-Res-2019-08"
   # alb_certificate_arn = var.certificate_arn
