@@ -20,27 +20,8 @@ terraform {
   }
 }
 
-# TODO(kwalsh): remove docker_image and docker_container
 provider "docker" {
   host = "unix:///var/run/docker.sock"
-}
-
-resource "docker_image" "ubuntu" {
-  name         = "ubuntu:latest"
-  force_remove = true
-}
-
-resource "docker_container" "ubuntu_container" {
-  image             = docker_image.ubuntu.image_id
-  name              = "ubuntu_container"
-  must_run          = true
-  rm                = true
-  publish_all_ports = true
-  command = [
-    "tail",
-    "-f",
-    "/dev/null"
-  ]
 }
 
 # Start of Serverless Jenkins
@@ -52,7 +33,7 @@ provider "aws" {
 
 module "serverless-jenkins" {
   source  = "TheNageek/serverless-jenkins/aws"
-  version = "0.2.0"
+  version = "0.4.0"
 
   vpc_id                = "vpc-03a6a84c4ca2a17dd"
   public_subnets        = ["subnet-0a68ccafccaa2c745", "subnet-06f0e1e9d32152380"]
@@ -61,7 +42,7 @@ module "serverless-jenkins" {
   create_private_subnet = false
 
   # TODO(kwalsh): add in HTTPS
-  alb_protocol        = "HTTP"
+  alb_protocol = "HTTP"
   # alb_policy_ssl      = "ELBSecurityPolicy-FS-1-2-Res-2019-08"
   # alb_certificate_arn = var.certificate_arn
 
