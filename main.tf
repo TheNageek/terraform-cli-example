@@ -59,9 +59,9 @@ module "serverless-jenkins" {
   assign_public_ip      = true
   create_private_subnet = false
 
-  alb_protocol        = "HTTPS"
-  alb_policy_ssl      = "ELBSecurityPolicy-FS-1-2-Res-2019-08"
-  alb_certificate_arn = var.certificate_arn
+  alb_protocol        = "HTTP"
+  # alb_policy_ssl      = "ELBSecurityPolicy-FS-1-2-Res-2019-08"
+  # alb_certificate_arn = var.certificate_arn
 
   route53_create_alias = true
   route53_zone_id      = "Z033006339CRNM8DJNOED"
