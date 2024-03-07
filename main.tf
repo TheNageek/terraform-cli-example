@@ -41,7 +41,13 @@ module "serverless-jenkins" {
   assign_public_ip      = true
   create_private_subnet = false
 
-  # TODO(kwalsh): add in HTTPS
+  jenkins_controller_cpu      = 512
+  jenkins_controller_memory   = 4096
+  jenkins_agents_cpu          = 8192
+  jenkins_agents_memory_limit = 0
+
+  # TODO(kwalsh): add in HTTPS and make better README instructions on creating
+  # certificates, and/or create on within module.
   alb_protocol = "HTTP"
   # alb_policy_ssl      = "ELBSecurityPolicy-FS-1-2-Res-2019-08"
   # alb_certificate_arn = var.certificate_arn
