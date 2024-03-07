@@ -33,7 +33,7 @@ provider "aws" {
 
 module "serverless-jenkins" {
   source  = "TheNageek/serverless-jenkins/aws"
-  version = "0.4.0"
+  version = "0.5.0"
 
   vpc_id                = "vpc-03a6a84c4ca2a17dd"
   public_subnets        = ["subnet-0a68ccafccaa2c745", "subnet-06f0e1e9d32152380"]
