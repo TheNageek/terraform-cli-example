@@ -43,7 +43,7 @@ module "serverless-jenkins" {
 
   jenkins_controller_cpu      = 512
   jenkins_controller_memory   = 4096
-  jenkins_agents_cpu          = 8192
+  jenkins_agents_cpu          = 16384
   jenkins_agents_memory_limit = 0
 
   # TODO(kwalsh): add in HTTPS and make better README instructions on creating
