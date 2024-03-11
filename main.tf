@@ -46,11 +46,9 @@ module "serverless-jenkins" {
   jenkins_agents_cpu          = 16384
   jenkins_agents_memory_limit = 0
 
-  # TODO(kwalsh): add in HTTPS and make better README instructions on creating
-  # certificates, and/or create on within module.
-  alb_protocol = "HTTP"
-  # alb_policy_ssl      = "ELBSecurityPolicy-FS-1-2-Res-2019-08"
-  # alb_certificate_arn = var.certificate_arn
+  alb_protocol = "HTTPS"
+  alb_policy_ssl      = "ELBSecurityPolicy-FS-1-2-Res-2019-08"
+  alb_certificate_arn = "arn:aws:acm:us-west-2:090334723359:certificate/6cf0ad1e-6672-4003-8bc1-e338d7d05b16"
 
   route53_create_alias = true
   route53_zone_id      = "Z033006339CRNM8DJNOED"
