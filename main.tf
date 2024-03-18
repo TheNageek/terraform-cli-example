@@ -28,7 +28,7 @@ provider "docker" {
 provider "aws" {
   region                   = "us-west-2"
   profile                  = "aws"
-  shared_credentials_files = ["/home/kwalsh/.aws/credentials"]
+  shared_credentials_files = ["$HOME/.aws/credentials"]
 }
 
 module "serverless-jenkins" {
