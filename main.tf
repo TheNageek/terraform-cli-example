@@ -29,6 +29,11 @@ provider "aws" {
   region                   = "us-west-2"
   profile                  = "aws"
   shared_credentials_files = ["$HOME/.aws/credentials"]
+  # assume_role {
+  #   role_arn     = "arn:aws:iam::090334723359:role/terraform-cloud-assume-role"
+  #   session_name = "VPEngineeringSession"
+  #   external_id  = "VPEngineering"
+  # }
 }
 
 module "serverless-jenkins" {
